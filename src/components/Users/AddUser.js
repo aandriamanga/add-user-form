@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModal from "../UI/ErrorModal";
+import Wrapper from "../Helpers/Wrapper";
 
 import styles from "./AddUser.module.css";
 
@@ -44,35 +45,36 @@ const AddUser = (props) => {
     setError(null);
   };
 
-  return [
-    error && (
-      <ErrorModal
-        key="error-modal"
-        title={error.title}
-        message={error.message}
-        onConfirm={errorHandler}
-      />
-    ),
-    <Card key="add-user-card" className={styles.input}>
-      <form onSubmit={addUserHandler}>
-        <label htmlFor="username">Username</label>
-        <input
-          id="username"
-          type="text"
-          value={enteredUsername}
-          onChange={usernameChangeHandler}
+  return (
+    <Wrapper>
+      {error && (
+        <ErrorModal
+          title={error.title}
+          message={error.message}
+          onConfirm={errorHandler}
         />
-        <label htmlFor="age">Age (years)</label>
-        <input
-          id="age"
-          type="number"
-          value={enteredAge}
-          onChange={ageChangeHandler}
-        />
-        <Button type="submit">Add user</Button>
-      </form>
-    </Card>,
-  ];
+      )}
+      <Card className={styles.input}>
+        <form onSubmit={addUserHandler}>
+          <label htmlFor="username">Username</label>
+          <input
+            id="username"
+            type="text"
+            value={enteredUsername}
+            onChange={usernameChangeHandler}
+          />
+          <label htmlFor="age">Age (years)</label>
+          <input
+            id="age"
+            type="number"
+            value={enteredAge}
+            onChange={ageChangeHandler}
+          />
+          <Button type="submit">Add user</Button>
+        </form>
+      </Card>
+    </Wrapper>
+  );
 };
 
 export default AddUser;
