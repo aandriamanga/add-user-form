@@ -10,5 +10,3 @@
 - Create wrapper component
 - React Fragments
 - React "Portal"
-- Working with "Ref"
-- Controlled vs Uncontrolled Components
