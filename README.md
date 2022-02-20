@@ -2,7 +2,6 @@
 
 ## Main principle implemented
 
-- Module intoduction
 - Re-usable component
 - Managing state
 - Create modal
